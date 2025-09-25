@@ -24,7 +24,7 @@
   },
   "author": "edX",
   "license": "AGPL-3.0",
-  "homepage": "",
+  "homepage": "/learner-dashboard",
   "publishConfig": {
     "access": "public"
   },
