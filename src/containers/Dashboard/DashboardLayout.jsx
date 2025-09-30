@@ -144,13 +144,13 @@ export const DashboardLayout = ({ children }) => {
         <div className='flex-1 overflow-auto'>
           <div className="flex-1">
             {children}
-            <Row>
+            {/* <Row>
                 <Col {...courseListColumnProps} className="course-list-column">
                 </Col>
                 <Col {...columnConfig.sidebar} className={['sidebar-column', !isCollapsed && 'not-collapsed']}>
                 <WidgetSidebarSlot />
                 </Col>
-                </Row>
+                </Row> */}
           </div>
         </div>
       </section>
