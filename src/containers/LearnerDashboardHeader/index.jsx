@@ -11,6 +11,7 @@ import ConfirmEmailBanner from './ConfirmEmailBanner';
 import { useLearnerDashboardHeaderMenu, findCoursesNavClicked } from './hooks';
 
 import './index.scss';
+import AgentHeader from '../../components/AgentLayout/AgentHeader';
 
 export const LearnerDashboardHeader = () => {
   const { authenticatedUser } = React.useContext(AppContext);
@@ -29,11 +30,12 @@ export const LearnerDashboardHeader = () => {
   return (
     <>
       <ConfirmEmailBanner />
-      <Header
+      <AgentHeader />
+      {/* <Header
         mainMenuItems={learnerHomeHeaderMenu.mainMenu}
         secondaryMenuItems={learnerHomeHeaderMenu.secondaryMenu}
         userMenuItems={learnerHomeHeaderMenu.userMenu}
-      />
+      /> */}
       <MasqueradeBar />
     </>
   );
