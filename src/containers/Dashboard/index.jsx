@@ -19,15 +19,15 @@ export const Dashboard = () => {
   const showSelectSessionModal = reduxHooks.useShowSelectSessionModal();
 
   return (
-    <div id="dashboard-container" className="d-flex flex-column p-2 pt-0">
-      <h1 className="sr-only">{pageTitle}</h1>
+    <div id="dashboard-container" className="d-flex flex-column h-full">
+      {/* <h1 className="sr-only text-red-500">{pageTitle}</h1> */}
       {!initIsPending && (
         <>
           <DashboardModalSlot />
           {(hasCourses && showSelectSessionModal) && <SelectSessionModal />}
         </>
       )}
-      <div id="dashboard-content" data-testid="dashboard-content">
+      <div id="dashboard-content" data-testid="dashboard-content" className='h-full'>
         {initIsPending
           ? (<LoadingView />)
           : (

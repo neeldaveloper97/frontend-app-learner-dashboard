@@ -10,8 +10,8 @@ const Sidebar = ({ sidebarCollapsed, setSidebarCollapsed }) => {
         {
             label: null, // no label for the top group
             items: [
-                { name: 'Dashboard', icon: ChartPie, path: '/dashboard' },
-                { name: 'Explore Courses', icon: Compass, path: '/explore-courses' },
+                { name: 'Dashboard', icon: ChartPie, path: '/learner-dashboard/' },
+                { name: 'Explore Courses', icon: Compass, path: 'http://local.openedx.io:8000/courses' },
             ],
         },
         {
@@ -32,7 +32,7 @@ const Sidebar = ({ sidebarCollapsed, setSidebarCollapsed }) => {
         <>
             <aside
                 className='flex flex-col shadow-[0px_4px_32px_0px_#00000029] overflow-hidden text-white transition-all duration-300 ease-in-out bg-darkColor h-screen sticky top-0'
-                style={{ width: sidebarCollapsed ? '80px' : '250px' }}
+                style={{ width: sidebarCollapsed ? '80px' : '256px' }}
             >
                 <div className='flex items-center w-full p-4 border-b border-white/25'>
                     <img

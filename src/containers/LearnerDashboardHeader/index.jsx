@@ -27,10 +27,11 @@ export const LearnerDashboardHeader = () => {
     exploreCoursesClick,
   });
 
+  console.log('learnerHomeHeaderMenu', learnerHomeHeaderMenu);
+
   return (
     <>
       <ConfirmEmailBanner />
-      <AgentHeader />
       {/* <Header
         mainMenuItems={learnerHomeHeaderMenu.mainMenu}
         secondaryMenuItems={learnerHomeHeaderMenu.secondaryMenu}

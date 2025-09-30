@@ -81,7 +81,7 @@ export const App = () => {
       <div>
         <AppWrapper>
           <LearnerDashboardHeader />
-          <main id="main">
+          <main id="main" className="relative h-screen overflow-hidden">
             {hasNetworkFailure
               ? (
                 <Alert variant="danger">
@@ -92,7 +92,7 @@ export const App = () => {
               )}
           </main>
         </AppWrapper>
-        <FooterSlot />
+        {/* <FooterSlot /> */}
       </div>
     </>
   );

@@ -24,10 +24,12 @@ $input-focus-box-shadow: var(--pgn-elevation-form-input-base); // hack to get up
 }
 
 #root {
+
   // Removing a odd 1.5 scaling on checkboxes.:
   input[type=checkbox] {
     transform: none;
   }
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -46,6 +48,7 @@ $input-focus-box-shadow: var(--pgn-elevation-form-input-base); // hack to get up
       top: 0.1em;
       height: 1.75rem;
       margin-right: 1rem;
+
       img {
         display: block;
         height: 100%;
@@ -64,7 +67,16 @@ $input-focus-box-shadow: var(--pgn-elevation-form-input-base); // hack to get up
       right: 1rem !important;
     }
   }
+
   .confirm-modal .pgn__modal-body {
     overflow: hidden;
   }
+}
+
+.rounded-full {
+  border-radius: 500px;
+}
+
+.flex {
+  display: flex;
 }

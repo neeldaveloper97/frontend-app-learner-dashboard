@@ -4,6 +4,8 @@ import { Bell, DialPadIcon, DotsNine, MagnifyingGlass } from "../../assets/svg";
 import { Button } from '../ui/Button';
 import Input from '../ui/Input';
 import UserDropdown from '../ui/UserDropdown';
+import React from 'react';
+import PricingDialog from '../PricingDialog';
 
 // Menu icon component for mobile toggle
 const MenuIcon = () => (
@@ -18,11 +20,19 @@ export default function AgentHeader({
     pageTitle,
     onToggleSidebar,
     isMobile,
-    sidebarOpen
+    sidebarOpen,
+    menu = { mainMenu: [], userMenu: [] } 
 }) {
-    const { user } = useSelector((state) => state.auth);
-    const [isProfileOpen, setIsProfileOpen] = useState(false);
 
+    const [showPricingDialog, setShowPricingDialog] = useState(false)
+    const handleGoWithCampus = () => {
+        setShowPricingDialog(false);
+        // Add any additional logic for campus plan
+    };
+    const handleJoinAsPartner = () => {
+        setShowPricingDialog(false);
+        // Add any additional logic for partner plan
+    };
     return (
         <>
             <header className="bg-white border-b border-gray-200 p-3.5 sm:px-6 sm:py-4 sticky top-0 z-30">
@@ -67,11 +77,11 @@ export default function AgentHeader({
                         </div>
 
                         {/* Hide "Join as Partner" button on mobile */}
-                        <div className="hidden sm:block">
+                        <div className="hidden sm:block" onClick={() => setShowPricingDialog(!showPricingDialog)}>
                             <Button variant='outline'>Join as Partner</Button>
                         </div>
 
-                        <UserDropdown />
+                        <UserDropdown userMenu={menu.userMenu} />
                     </div>
                 </div>
 
