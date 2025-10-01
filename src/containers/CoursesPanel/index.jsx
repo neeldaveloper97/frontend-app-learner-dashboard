@@ -114,12 +114,13 @@ export const CoursesPanel = () => {
           </div>
         </div>
         {hasCourses ?
-          <CourseShowcase
-            heading={<>Explore <span className="font-semibold">Active Courses</span></>}
-            courseData={courseListData.visibleList}
-            footerButton
-          />
-          // <CourseListSlot courseListData={courseListData} /> 
+          <>
+            <CourseShowcase
+              heading={<>Explore <span className="font-semibold">Active Courses</span></>}
+              courseData={courseListData.visibleList}
+              footerButton
+            />
+            <CourseListSlot courseListData={courseListData} /> </>
           : <NoCoursesViewSlot />}
 
         <TrustedCompanies />
