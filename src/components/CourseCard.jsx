@@ -21,7 +21,7 @@ export default function CourseCard({
 }) {
 
     const daysRemaining = formatToDays(startIn);
-    const isDisabled = daysRemaining > 0;
+    const isUpcoming = daysRemaining > 0;
 
     return (
         <div className="bg-white rounded-2xl overflow-hidden hover:shadow-md transition-shadow flex flex-col shadow-[0px_5px_16px_0px_#00000014]">
@@ -69,10 +69,10 @@ export default function CourseCard({
                     <div className="flex items-center justify-between">
 
                         <div>
-                            {!isDisabled &&
+                            {isUpcoming &&
                                 <>
                                     <p className="text-sm text-gray-600">Start in</p>
-                                    <p className="text-lg font-bold text-gray-900">{daysRemaining || "10 Days"}</p></>}
+                                    <p className="text-lg font-bold text-gray-900">{daysRemaining} Days</p></>}
 
                         </div>
 
@@ -134,29 +134,29 @@ export default function CourseCard({
                             onViewCourse();
                         }
                     }}
-                    disabled={isDisabled}
+                    disabled={isUpcoming}
                     className="text-contentDarkInformative hover:text-contentDarkInformative border-t border-contentBorderPrimary transition-colors font-medium text-sm flex items-center justify-center gap-1 p-4"
                     style={{
                         padding: "20px 16px"
                     }}
                 >
-                    Begin Course {isDisabled ? "(Coming Soon)" : ""}
+                    Begin Course {isUpcoming ? "(Coming Soon)" : ""}
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
                 </button>
             ) : (
                 <>
-                    {isDisabled ? <button onClick={() => {
+                    {isUpcoming ? <button disabled className="text-gray-400 border-t border-contentBorderPrimary font-medium text-sm flex items-center justify-center gap-1 p-4" style={{ padding: "20px 16px" }}>
+                        Coming Soon
+                    </button> : <button onClick={() => {
                         if (courseHomeURL) {
                             window.open(courseHomeURL, '_blank');
                         } else if (onViewCourse) {
                             onViewCourse();
                         }
-                    }} className="text-gray-400 border-t border-contentBorderPrimary font-medium text-sm flex items-center justify-center gap-1 p-4" style={{ padding: "20px 16px" }}>
+                    }} className="text-contentDarkInformative hover:text-contentDarkInformative border-t border-contentBorderPrimary transition-colors font-medium text-sm flex items-center justify-center gap-1 p-4">
                         Begin Course
-                    </button> : <button disabled className="text-gray-400 border-t border-contentBorderPrimary font-medium text-sm flex items-center justify-center gap-1 p-4" style={{ padding: "20px 16px" }}>
-                        Coming Soon
                     </button>}
                 </>
             )}
