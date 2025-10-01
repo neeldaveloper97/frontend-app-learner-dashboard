@@ -15,8 +15,10 @@ export default function CourseCard({
     brandName,
     courseUrl,
     courseNumber,
-    courseProviderName
+    courseProviderName,
+    courseHomeURL
 }) {
+   
     return (
         <div className="bg-white rounded-2xl overflow-hidden hover:shadow-md transition-shadow flex flex-col shadow-[0px_5px_16px_0px_#00000014]">
             {/* Image Section */}
@@ -129,7 +131,7 @@ export default function CourseCard({
                     </svg>
                 </button>
             ) : (
-                <a href={courseUrl} className="flex items-center justify-center w-full bg-primary rounded-t-none text-black hover:bg-cyan-500 transition-colors font-medium text-sm" style={{
+                <a href={courseHomeURL} className="flex items-center justify-center w-full bg-primary rounded-t-none text-black hover:bg-cyan-500 transition-colors font-medium text-sm" style={{
                     padding: "20px 16px"
                 }}>
                     Begin Course
