@@ -11,7 +11,7 @@ const Sidebar = ({ sidebarCollapsed, setSidebarCollapsed }) => {
             label: null, // no label for the top group
             items: [
                 { name: 'Dashboard', icon: ChartPie, path: '/learner-dashboard/' },
-                { name: 'Explore Courses', icon: Compass, path: 'http://local.openedx.io:8000/courses' },
+                { name: 'Explore Courses', icon: Compass, path: 'https://campus-dev.nextere.com/courses' },
             ],
         },
         {
