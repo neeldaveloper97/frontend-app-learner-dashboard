@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Bell, DialPadIcon, DotsNine, MagnifyingGlass } from "../../assets/svg";
-import { Button } from '../ui/Button';
 import Input from '../ui/Input';
 import UserDropdown from '../ui/UserDropdown';
-import React from 'react';
-import PricingDialog from '../PricingDialog';
 
 // Menu icon component for mobile toggle
 const MenuIcon = () => (
@@ -21,7 +17,7 @@ export default function AgentHeader({
     onToggleSidebar,
     isMobile,
     sidebarOpen,
-    menu = { mainMenu: [], userMenu: [] } 
+    menu = { mainMenu: [], userMenu: [] }
 }) {
 
     const [showPricingDialog, setShowPricingDialog] = useState(false)
@@ -78,7 +74,19 @@ export default function AgentHeader({
 
                         {/* Hide "Join as Partner" button on mobile */}
                         <div className="hidden sm:block" onClick={() => setShowPricingDialog(!showPricingDialog)}>
-                            <Button variant='outline'>Join as Partner</Button>
+                            <button variant='outline' style={{
+                                backgroundColor: '#fff',
+                                color: '#000',
+                                borderColor: '#000',
+                                borderWidth: '1px',
+                                borderStyle: 'solid',
+                                borderRadius: '5px',
+                                padding: '5px 10px',
+                                fontSize: '14px',
+                                fontWeight: '500',
+                                cursor: 'pointer',
+                                minHeight: '42px'
+                            }}>Join as Partner</button>
                         </div>
 
                         <UserDropdown userMenu={menu.userMenu} />

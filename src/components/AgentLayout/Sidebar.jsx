@@ -11,7 +11,7 @@ const Sidebar = ({ sidebarCollapsed, setSidebarCollapsed }) => {
             label: null, // no label for the top group
             items: [
                 { name: 'Dashboard', icon: ChartPie, path: '/learner-dashboard/' },
-                { name: 'Explore Courses', icon: Compass, path: 'https://campus-dev.nextere.com/courses' },
+                { name: 'Explore Courses', icon: Compass, path: 'http://local.openedx.io:8000/courses' },
             ],
         },
         {
@@ -34,7 +34,9 @@ const Sidebar = ({ sidebarCollapsed, setSidebarCollapsed }) => {
                 className='flex flex-col shadow-[0px_4px_32px_0px_#00000029] overflow-hidden text-white transition-all duration-300 ease-in-out bg-darkColor h-screen sticky top-0'
                 style={{ width: sidebarCollapsed ? '80px' : '256px' }}
             >
-                <div className='flex items-center w-full p-4 border-b border-white/25'>
+                <div className={`flex items-center w-full border-b border-white/25 transition-all duration-300 ease-in-out p-4`} style={{
+                    height: 95
+                }}>
                     <img
                         src={LogoIcon}
                         alt="Logo"
@@ -57,7 +59,7 @@ const Sidebar = ({ sidebarCollapsed, setSidebarCollapsed }) => {
                 <nav className="flex flex-col flex-1">
                     <ul className=" divide-y divide-white/25"> {/* spacing between groups */}
                         {sideBarItems.map((group, groupIndex) => (
-                            <li key={groupIndex} className='px-4 py-5'>
+                            <li key={groupIndex} className='p-4'>
                                 {group.label && (
                                     <div
                                         className={`text-xs font-semibold text-contentDarkSecondary uppercase tracking-wider px-3 pb-2 transition-all duration-300 ${sidebarCollapsed ? 'opacity-0 h-0' : 'opacity-100 h-auto'

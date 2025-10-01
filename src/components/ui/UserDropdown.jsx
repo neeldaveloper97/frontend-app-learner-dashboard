@@ -34,6 +34,9 @@ const UserDropdown = ({ userMenu = [], username = 'User Name' }) => {
             <a
                 disabled={disabled}
                 href={href}
+                style={{
+                    pointerEvents: disabled ? 'none' : 'auto',
+                }}
                 className={`w-full flex items-center gap-3 py-2 text-sm text-left transition-colors ${disabled
                     ? 'text-gray-400 cursor-not-allowed'
                     : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
@@ -63,7 +66,7 @@ const UserDropdown = ({ userMenu = [], username = 'User Name' }) => {
                     <img
                         src={user?.profileImage}
                         alt="Brian F."
-                        className="w-8 h-8 rounded-full object-cover"
+                        className="border w-8 h-8 rounded-full object-cover"
                     />
                     <div className='hidden md:flex items-center'>
                         <span className="text-sm font-medium text-gray-900">{capitalizeFirstLetter(user?.username)}</span>
@@ -83,15 +86,14 @@ const UserDropdown = ({ userMenu = [], username = 'User Name' }) => {
                             <div className="flex items-center gap-2">
                                 <img
                                     src={user?.profileImage || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format"}
-
                                     alt="Profile"
-                                    className="w-10 h-10 rounded-full object-cover"
+                                    className="border w-10 h-10 rounded-full object-cover"
                                 />
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-sm font-medium text-gray-900 truncate">
+                                    <p className="text-sm font-medium text-gray-900 truncate mb-0">
                                         {capitalizeFirstLetter(user?.username)}
                                     </p>
-                                    <p className="text-xs text-gray-500 truncate">
+                                    <p className="text-xs text-gray-500 truncate mb-0">
                                         {user?.email}
                                     </p>
                                 </div>

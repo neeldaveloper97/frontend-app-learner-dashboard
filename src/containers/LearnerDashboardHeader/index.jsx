@@ -1,17 +1,12 @@
 import React from 'react';
 
-import MasqueradeBar from 'containers/MasqueradeBar';
 import { AppContext } from '@edx/frontend-platform/react';
-import Header from '@edx/frontend-component-header';
-import { reduxHooks } from 'hooks';
 import urls from 'data/services/lms/urls';
-
+import { reduxHooks } from 'hooks';
 import ConfirmEmailBanner from './ConfirmEmailBanner';
-
-import { useLearnerDashboardHeaderMenu, findCoursesNavClicked } from './hooks';
-
-import './index.scss';
+import { findCoursesNavClicked, useLearnerDashboardHeaderMenu } from './hooks';
 import AgentHeader from '../../components/AgentLayout/AgentHeader';
+import './index.scss';
 
 export const LearnerDashboardHeader = () => {
   const { authenticatedUser } = React.useContext(AppContext);
@@ -27,7 +22,7 @@ export const LearnerDashboardHeader = () => {
     exploreCoursesClick,
   });
 
-  console.log('learnerHomeHeaderMenu', learnerHomeHeaderMenu);
+
 
   return (
     <>
@@ -37,9 +32,9 @@ export const LearnerDashboardHeader = () => {
         secondaryMenuItems={learnerHomeHeaderMenu.secondaryMenu}
         userMenuItems={learnerHomeHeaderMenu.userMenu}
       /> */}
-      <MasqueradeBar />
+      {/* <MasqueradeBar /> */}
     </>
-  );
+  );AgentHeader
 };
 
 LearnerDashboardHeader.propTypes = {};

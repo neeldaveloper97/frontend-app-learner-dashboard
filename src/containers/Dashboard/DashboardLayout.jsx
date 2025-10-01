@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { cloneElement, useEffect, useState } from 'react';
 
-import { Container ,Col, Row } from '@openedx/paragon';
+import { Container, Col, Row } from '@openedx/paragon';
 
 import { AppContext } from '@edx/frontend-platform/react';
 import { useLocation } from 'react-router-dom';
@@ -43,8 +43,8 @@ export const DashboardLayout = ({ children }) => {
   const { authenticatedUser } = React.useContext(AppContext);
   const { courseSearchUrl } = reduxHooks.usePlatformSettingsData();
   const exploreCoursesClick = () => {
-      findCoursesNavClicked(urls.baseAppUrl(courseSearchUrl));
-    };
+    findCoursesNavClicked(urls.baseAppUrl(courseSearchUrl));
+  };
   const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
