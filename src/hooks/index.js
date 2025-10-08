@@ -1,5 +1,5 @@
 import * as redux from 'data/redux/hooks';
-import * as api from './api';
+import * as api from './\api';
 import * as utils from './utils';
 
 export const reduxHooks = redux;

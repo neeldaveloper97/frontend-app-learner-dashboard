@@ -1,0 +1,56 @@
+<ng-template kendoPopoverBodyTemplate let-anchor let-data="data">
+    <div class="row m-0 w-300">
+      <div class="col-12 p-0">
+        <p class="app-header">Your Nextere Apps</p>
+      </div>
+    </div>
+    <div class="row m-0 w-300">
+      <div class="col-4">
+        <a class="text-dark text-decoration-none d-flex justify-content-center align-items-center flex-column"
+          href="{{ environmentURL.commissionURL }}" (click)="onHide()" target="_blank">
+          <img class="size" src="../../../assets/images/Commission.png" alt="" />
+          <p class="app-text mt-1">Pay</p>
+        </a>
+      </div>
+
+      <div class="col-4">
+        <a class="text-dark text-decoration-none  d-flex justify-content-center align-items-center flex-column"
+          href="{{ environmentURL.crmURL }}" (click)="onHide()" target="_blank">
+          <img class="size" src="../../../assets/images/crm.png.png" alt="" />
+          <p class="app-text mt-1">CRM</p>
+        </a>
+      </div>
+      @if (!this.currentUser.roles.includes('InvitedAgent')) {
+      <div class="col-4">
+        <a class="text-dark text-decoration-none  d-flex justify-content-center align-items-center flex-column"
+          href="{{ environmentURL.signURL }}" (click)="onHide()" target="_blank">
+          <img class="size" src="../../../assets/images/Sign.png" alt="" />
+          <p class="app-text mt-1 sign">Sign</p>
+        </a>
+      </div>
+      }
+      <div class="col-4">
+        <a class="text-dark text-decoration-none d-flex justify-content-center align-items-center flex-column"
+          href="{{ environmentURL.conXentURL }}" (click)="onHide()" target="_blank">
+          <img class="size" src="../../../assets/images/Consent.png" alt="" />
+          <p class="app-text mt-1">Consent</p>
+        </a>
+      </div>
+      @if (!this.currentUser.roles.includes('InvitedAgent')) {
+      <div class="col-4 d-flex align-items-start justify-content-center">
+        <a class="text-dark text-decoration-none  d-flex justify-content-center align-items-center flex-column"
+          href="{{ environmentURL.phoneURL }}" (click)="onHide()" target="_blank">
+          <img class="size" src="../../../assets/images/Phone.png" alt="" />
+          <p class="app-text mt-1 mb-0">Phone</p>
+        </a>
+      </div>
+      }
+      <div class="col-4">
+        <a class="text-dark text-decoration-none  d-flex justify-content-center align-items-center flex-column"
+          href="{{ environmentURL.smsURL }}" (click)="onHide()" target="_blank">
+          <img class="size sms" src="../../../assets/images/SMS.png" alt="" />
+          <p class="app-text mt-1 sign">SMS</p>
+        </a>
+      </div>
+    </div>
+  </ng-template>

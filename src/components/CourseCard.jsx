@@ -1,5 +1,7 @@
 import { formatToDays } from "../utils/utils";
-import { Button } from "./ui/Button";
+import noCourseImg from "../assets/jpg/no_course_image.png"
+import { useState } from "react";
+
 
 export default function CourseCard({
     title,
@@ -19,9 +21,9 @@ export default function CourseCard({
     courseProviderName,
     courseHomeURL
 }) {
-
     const daysRemaining = formatToDays(startIn);
     const isUpcoming = daysRemaining > 0;
+    const [imgSrc, setImgSrc] = useState(imageUrl);
 
     return (
         <div className="bg-white rounded-2xl overflow-hidden hover:shadow-md transition-shadow flex flex-col shadow-[0px_5px_16px_0px_#00000014]">
@@ -29,8 +31,8 @@ export default function CourseCard({
             <div className="bg-black relative">
                 {/* Placeholder for course image - you can replace with actual image */}
                 <div className="h-64 relative">
-                    <img src={imageUrl} className="size-full object-cover" alt="CourseMain Bg" />
-                    <span className="block absolute size-full inset-0 bg-gradient-to-b from-black/0 to-black/80"></span>
+                    <img src={imgSrc} className="size-full object-cover bg-white" alt="" onError={() => setImgSrc(noCourseImg)} />
+                    {/* <span className="block absolute size-full inset-0 bg-gradient-to-b from-black/0 to-black/80"></span> */}
                 </div>
             </div>
 
@@ -49,7 +51,6 @@ export default function CourseCard({
                     <p className="text-sm text-gray-600 mb-3">{courseNumber || "ES501"}</p>
                     <h4 className="text-lg font-bold text-gray-900 mb-3">{courseProviderName || "OXford"}</h4>
                 </h3>
-                {/* Course URL */}
 
                 {/* Rating */}
                 <div className="flex items-center mb-4">
@@ -77,10 +78,9 @@ export default function CourseCard({
                         </div>
 
                         {/* Circular Progress */}
-                        <div className="flex items-center">
+                        {/* <div className="flex items-center">
                             <div className="relative size-16">
                                 <svg className="size-16 transform -rotate-90" viewBox="0 0 36 36">
-                                    {/* Background circle */}
                                     <path
                                         className="text-gray-200"
                                         stroke="currentColor"
@@ -90,7 +90,6 @@ export default function CourseCard({
                                             a 15.9155 15.9155 0 0 1 0 31.831
                                             a 15.9155 15.9155 0 0 1 0 -31.831"
                                     />
-                                    {/* Progress circle */}
                                     <path
                                         className="text-primary"
                                         stroke="currentColor"
@@ -108,7 +107,7 @@ export default function CourseCard({
                                     <span className="text-[10px] text-gray-500">Booked</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 )}
 
@@ -124,16 +123,25 @@ export default function CourseCard({
                 )}
 
             </div>
+
+            {/* Learn More Button
+            {course && (
+                <button
+                    onClick={() =>  window.location.href = `${window.location.href}${courseUrl}`}
+                    className="text-contentDarkInformative hover:text-contentDarkInformative border-t border-contentBorderPrimary transition-colors font-medium text-sm flex items-center justify-center gap-1 p-4"
+                    style={{ padding: "20px 16px" }}
+                >
+                    Learn More
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+            )} */}
+
             {/* Action Button */}
             {variant === "free" || variant === "coursePrice" ? (
                 <button
-                    onClick={() => {
-                        if (courseHomeURL) {
-                            window.open(courseHomeURL, '_blank');
-                        } else if (onViewCourse) {
-                            onViewCourse();
-                        }
-                    }}
+                   onClick={() =>   window.location.href = `${window.location.href}${courseUrl}`}
                     disabled={isUpcoming}
                     className="text-contentDarkInformative hover:text-contentDarkInformative border-t border-contentBorderPrimary transition-colors font-medium text-sm flex items-center justify-center gap-1 p-4"
                     style={{
@@ -149,13 +157,7 @@ export default function CourseCard({
                 <>
                     {isUpcoming ? <button disabled className="text-gray-400 border-t border-contentBorderPrimary font-medium text-sm flex items-center justify-center gap-1 p-4" style={{ padding: "20px 16px" }}>
                         Coming Soon
-                    </button> : <button onClick={() => {
-                        if (courseHomeURL) {
-                            window.open(courseHomeURL, '_blank');
-                        } else if (onViewCourse) {
-                            onViewCourse();
-                        }
-                    }} className="text-contentDarkInformative hover:text-contentDarkInformative border-t border-contentBorderPrimary transition-colors font-medium text-sm flex items-center justify-center gap-1 p-4">
+                    </button> : <button onClick={() =>   window.location.href = `${window.location.href}${courseUrl}`} className="text-contentDarkInformative hover:text-contentDarkInformative border-t border-contentBorderPrimary transition-colors font-medium text-sm flex items-center justify-center gap-1 p-4">
                         Begin Course
                     </button>}
                 </>

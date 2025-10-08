@@ -28,11 +28,13 @@ export const cardSimpleSelectors = StrictDict({
   enrollment: ({ enrollment }) => enrollment,
   entitlement: ({ entitlement }) => entitlement,
   gradeData: ({ gradeData }) => gradeData,
-  relatedPrograms: ({ programs: { relatedPrograms } }) => relatedPrograms,
+  relatedPrograms: ({ programs }) => programs?.relatedPrograms || [],
 });
 
-export const mkCardSelector = (simpleSelector, selector) => (state, cardId) => (
-  selector(simpleSelector(module.simpleSelectors.courseData(state)[cardId]))
-);
+export const mkCardSelector = (simpleSelector, selector) => (state, cardId) => {
+  const courseData = module.simpleSelectors.courseData(state) || {};
+  const cardData = courseData[cardId] || {};
+  return selector(simpleSelector(cardData));
+};
 
 export default simpleSelectors;

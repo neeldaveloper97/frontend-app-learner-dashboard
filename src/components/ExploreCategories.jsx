@@ -8,28 +8,32 @@ const ExploreCategories = () => {
             title: "Data Science",
             brandName: "Microsoft",
             description: "Our goal at Microsoft is to empower every individual and organization on the planet to achieve more. Through our comprehensive data science programs, we help learners master the tools and techniques needed to extract insights from data.",
-            isHighlighted: true
+            isHighlighted: true,
+            providerUrl:"provider-details/1"
         },
         {
             id: 2,
             title: "Web Development",
             brandName: "Microsoft",
             description: "Build modern web applications with our comprehensive web development curriculum. Learn the latest technologies and frameworks to create responsive, interactive websites.",
-            isHighlighted: false
+            isHighlighted: false,
+            providerUrl:"provider-details/2"
         },
         {
             id: 3,
             title: "Cloud Computing",
             brandName: "Microsoft",
             description: "Master cloud technologies and services. Learn to deploy, manage, and scale applications in the cloud with industry-leading platforms and tools.",
-            isHighlighted: false
+            isHighlighted: false,
+            providerUrl:"provider-details/3"
         },
         {
             id: 4,
             title: "AI & Machine Learning",
             brandName: "Microsoft",
             description: "Dive into artificial intelligence and machine learning. Explore cutting-edge algorithms, neural networks, and AI applications that are transforming industries.",
-            isHighlighted: false
+            isHighlighted: false,
+            providerUrl:"/provider-details/4"
         }
     ];
 
@@ -47,7 +51,7 @@ const ExploreCategories = () => {
                         brandName={category.brandName}
                         description={category.description}
                         isHighlighted={category.isHighlighted}
-                        onExplore={() => console.log(`Explore ${category.title}`)}
+                        onExplore={category.providerUrl}
                         certificateImage={msLogo}
                     />
                 ))}

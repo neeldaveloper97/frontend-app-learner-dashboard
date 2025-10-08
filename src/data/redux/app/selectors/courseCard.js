@@ -16,22 +16,34 @@ export const loadDateVal = (date) => (date ? new Date(date) : null);
 export const courseCard = StrictDict({
   certificate: mkCardSelector(
     cardSimpleSelectors.certificate,
-    (certificate) => (certificate === null ? {} : ({
-      availableDate: new Date(certificate.availableDate),
-      certPreviewUrl: baseAppUrl(certificate.certPreviewUrl),
-      isDownloadable: certificate.isDownloadable,
-      isEarnedButUnavailable: certificate.isEarned && new Date(certificate.availableDate) > new Date(),
-      isRestricted: certificate.isRestricted,
-      isEarned: certificate.isEarned,
-    })),
+    (certificate) => (certificate ? {
+      availableDate: certificate.availableDate ? new Date(certificate.availableDate) : null,
+      certPreviewUrl: baseAppUrl(certificate.certPreviewUrl || ''),
+      isDownloadable: certificate.isDownloadable || false,
+      isEarnedButUnavailable: certificate.isEarned && certificate.availableDate && new Date(certificate.availableDate) > new Date(),
+      isRestricted: certificate.isRestricted || false,
+      isEarned: certificate.isEarned || false,
+    } : {
+      availableDate: null,
+      certPreviewUrl: '',
+      isDownloadable: false,
+      isEarnedButUnavailable: false,
+      isRestricted: false,
+      isEarned: false,
+    }),
   ),
   course: mkCardSelector(
     cardSimpleSelectors.course,
-    (course) => ({
-      bannerImgSrc: baseAppUrl(course.bannerImgSrc),
-      courseNumber: course.courseNumber,
-      courseName: course.courseName,
-      socialShareUrl: course.socialShareUrl,
+    (course) => (course ? {
+      bannerImgSrc: baseAppUrl(course.bannerImgSrc || ''),
+      courseNumber: course.courseNumber || '',
+      courseName: course.courseName || '',
+      socialShareUrl: course.socialShareUrl || '',
+    } : {
+      bannerImgSrc: '',
+      courseNumber: '',
+      courseName: '',
+      socialShareUrl: '',
     }),
   ),
   courseProvider: mkCardSelector(
@@ -40,23 +52,36 @@ export const courseCard = StrictDict({
   ),
   courseRun: mkCardSelector(
     cardSimpleSelectors.courseRun,
-    (courseRun) => (courseRun === null ? {} : {
+    (courseRun) => (courseRun ? {
       endDate: module.loadDateVal(courseRun.endDate),
       startDate: module.loadDateVal(courseRun.startDate),
-      advertisedStart: courseRun.advertisedStart,
+      advertisedStart: courseRun.advertisedStart || '',
 
-      courseId: courseRun.courseId,
-      isArchived: courseRun.isArchived,
-      isStarted: courseRun.isStarted,
+      courseId: courseRun.courseId || '',
+      isArchived: courseRun.isArchived || false,
+      isStarted: courseRun.isStarted || false,
 
-      minPassingGrade: Math.floor(courseRun.minPassingGrade * 100),
+      minPassingGrade: Math.floor((courseRun.minPassingGrade || 0) * 100),
 
-      homeUrl: courseRun.homeUrl,
-      marketingUrl: courseRun.marketingUrl,
+      homeUrl: courseRun.homeUrl || '',
+      marketingUrl: courseRun.marketingUrl || '',
 
-      progressUrl: baseAppUrl(courseRun.progressUrl),
-      resumeUrl: baseAppUrl(courseRun.resumeUrl), // resume will route this to learning mfe.
-      unenrollUrl: baseAppUrl(courseRun.unenrollUrl),
+      progressUrl: baseAppUrl(courseRun.progressUrl || ''),
+      resumeUrl: baseAppUrl(courseRun.resumeUrl || ''),
+      unenrollUrl: baseAppUrl(courseRun.unenrollUrl || ''),
+    } : {
+      endDate: null,
+      startDate: null,
+      advertisedStart: '',
+      courseId: '',
+      isArchived: false,
+      isStarted: false,
+      minPassingGrade: 0,
+      homeUrl: '',
+      marketingUrl: '',
+      progressUrl: '',
+      resumeUrl: '',
+      unenrollUrl: '',
     }),
   ),
   credit: mkCardSelector(

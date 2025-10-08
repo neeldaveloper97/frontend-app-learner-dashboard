@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Bell, DialPadIcon, DotsNine, MagnifyingGlass } from "../../assets/svg";
 import Input from '../ui/Input';
 import UserDropdown from '../ui/UserDropdown';
+import AgentAppsPopup from './AgentAppsPopup';
 
 // Menu icon component for mobile toggle
 const MenuIcon = () => (
@@ -21,6 +22,7 @@ export default function AgentHeader({
 }) {
 
     const [showPricingDialog, setShowPricingDialog] = useState(false)
+    const [isAppsOpen, setIsAppsOpen] = useState(false);
     const handleGoWithCampus = () => {
         setShowPricingDialog(false);
         // Add any additional logic for campus plan
@@ -65,10 +67,16 @@ export default function AgentHeader({
                                     <img src={Bell} alt="Notifications" />
                                 </button>
                             </div>
-                            <div className='px-2 sm:px-3 hidden sm:block'>
-                                <button className="p-2 rounded-full bg-transparent hover:bg-neutral-50 cursor-pointer">
+                            <div className='px-2 sm:px-3 hidden sm:block relative'>
+                                <button
+                                    onClick={() => setIsAppsOpen((s) => !s)}
+                                    className="p-2 rounded-full bg-transparent hover:bg-neutral-50 cursor-pointer"
+                                    aria-expanded={isAppsOpen}
+                                    aria-haspopup="true"
+                                >
                                     <img src={DotsNine} alt="More options" />
                                 </button>
+                                <AgentAppsPopup isOpen={isAppsOpen} onClose={() => setIsAppsOpen(false)} />
                             </div>
                         </div>
 

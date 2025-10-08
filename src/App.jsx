@@ -29,6 +29,8 @@ import { getConfig } from '@edx/frontend-platform';
 import messages from './messages';
 import './App.scss';
 import './output.css'
+import './styles/embla.css'
+import DashboardLayout from './containers/Dashboard/DashboardLayout';
 
 export const App = () => {
   const { authenticatedUser } = React.useContext(AppContext);
@@ -40,7 +42,7 @@ export const App = () => {
   const hasNetworkFailure = isFailed.initialize || isFailed.refreshList;
   const { supportEmail } = reduxHooks.usePlatformSettingsData();
   const loadData = reduxHooks.useLoadData();
-
+  
   React.useEffect(() => {
     if (authenticatedUser?.administrator || getConfig().NODE_ENV === 'development') {
       window.loadEmptyData = () => {
@@ -88,7 +90,8 @@ export const App = () => {
                   <ErrorPage message={formatMessage(messages.errorMessage, { supportEmail })} />
                 </Alert>
               ) : (
-                <Dashboard />
+               <Dashboard />
+               
               )}
           </main>
         </AppWrapper>

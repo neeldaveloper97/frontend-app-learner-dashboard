@@ -103,3 +103,39 @@ export const useCreateCreditRequest = (cardId) => {
   const { courseId } = reduxHooks.useCardCourseRunData(cardId);
   return () => api.createCreditRequest({ providerId, courseId, username });
 };
+
+export const useCourseDiscovery = () => {
+  const [courses, setCourses] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+
+  const fetchCourses = React.useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await api.getCourseDiscovery();
+      const courseData = response.data;
+      // Handle different response structures
+      if (Array.isArray(courseData)) {
+        setCourses(courseData);
+      } else if (courseData?.results && Array.isArray(courseData.results)) {
+        setCourses(courseData.results);
+      } else if (courseData?.courses && Array.isArray(courseData.courses)) {
+        setCourses(courseData.courses);
+      } else {
+        setCourses([]);
+      }
+    } catch (err) {
+      setError(err);
+      setCourses([]);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    fetchCourses();
+  }, [fetchCourses]);
+
+  return { courses, loading, error, refetch: fetchCourses };
+};

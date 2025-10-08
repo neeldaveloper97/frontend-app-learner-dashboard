@@ -34,7 +34,6 @@ export const CourseCardMenu = ({ cardId }) => {
   if (!shouldShowDropdown) {
     return null;
   }
-
   return (
     <>
       <Dropdown onToggle={handleToggleDropdown}>

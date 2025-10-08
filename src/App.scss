@@ -80,3 +80,11 @@ $input-focus-box-shadow: var(--pgn-elevation-form-input-base); // hack to get up
 .flex {
   display: flex;
 }
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit !important;
+}

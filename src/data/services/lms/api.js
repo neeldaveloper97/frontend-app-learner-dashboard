@@ -65,6 +65,15 @@ export const createCreditRequest = ({ providerId, courseId, username }) => post(
   { course_key: courseId, username },
 );
 
+export const getCourseDiscovery = ({ searchString = '', pageSize = 20, pageIndex = 0 } = {}) => post(
+  urls.courseDiscoveryUrl(),
+  {
+    search_string: searchString,
+    page_size: pageSize,
+    page_index: pageIndex,
+  },
+);
+
 export default {
   initializeList,
   unenrollFromCourse,
@@ -74,4 +83,5 @@ export default {
   logEvent,
   logShare,
   createCreditRequest,
+  getCourseDiscovery,
 };

@@ -2,7 +2,6 @@
 import { useIntl } from '@edx/frontend-platform/i18n';
 import courseImg from '../../assets/jpg/courseImg.jpg';
 import { reduxHooks } from 'hooks';
-import CourseListSlot from 'plugin-slots/CourseListSlot';
 import NoCoursesViewSlot from 'plugin-slots/NoCoursesViewSlot';
 
 import { useCourseListData } from './hooks';
@@ -13,13 +12,14 @@ import CourseShowcase from '../../components/CourseShowcase';
 import TrustedCompanies from '../../components/TrustedCompanies';
 import ExploreCategories from '../../components/ExploreCategories';
 import { getEdxUserInfo } from '../../utils/edxUser';
+import PopularInstructors from '../../components/PopularInstructors';
 
 /**
  * Renders the list of CourseCards, as well as the controls (CourseFilterControls) for modifying the list.
  * Also houses the NoCoursesView to display if the user hasn't enrolled in any courses.
  * @returns List of courses as CourseCards or empty state
 */
-export const CoursesPanel = () => {
+export const CoursesPanel = ({ sidebarCollapsed }) => {
   const { formatMessage } = useIntl();
   const hasCourses = reduxHooks.useHasCourses();
   const courseListData = useCourseListData();
@@ -125,6 +125,7 @@ export const CoursesPanel = () => {
 
         <TrustedCompanies />
         <ExploreCategories />
+          <PopularInstructors sidebarCollapsed={sidebarCollapsed} />
       </div>
     </div>
   );

@@ -11,20 +11,20 @@ const Sidebar = ({ sidebarCollapsed, setSidebarCollapsed }) => {
             label: null, // no label for the top group
             items: [
                 { name: 'Dashboard', icon: ChartPie, path: '/learner-dashboard/' },
-                { name: 'Explore Courses', icon: Compass, path: 'https://campus-dev.nextere.com/courses' },
+                { name: 'Explore Courses', icon: Compass, path: 'explore-courses/' },
             ],
         },
         {
             label: 'MY LEARNING',
             items: [
-                { name: 'Courses', icon: Student, path: '/my-courses' },
-                { name: 'Certifications', icon: Card, path: '/certifications' },
+                { name: 'Courses', icon: Student, path: 'my-courses' },
+                { name: 'Certifications', icon: Card, path: 'certifications' },
             ],
         },
         {
             label: null, // bottom group (no label, just spacing)
             items: [
-                { name: 'Learn with us', icon: Book, path: '/learn-with-us' },
+                { name: 'Learn with us', icon: Book, path: 'learn-with-us' },
             ],
         },
     ];

@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { cloneElement, useEffect, useState } from 'react';
 
-import { Container, Col, Row } from '@openedx/paragon';
 
 import { AppContext } from '@edx/frontend-platform/react';
-import { useLocation } from 'react-router-dom';
+import {  useLocation } from 'react-router-dom';
 import AgentHeader from '../../components/AgentLayout/AgentHeader';
 import Sidebar from '../../components/AgentLayout/Sidebar';
 import hooks from './hooks';
 import { reduxHooks } from 'hooks';
-import WidgetSidebarSlot from 'plugin-slots/WidgetSidebarSlot';
 import { useLearnerDashboardHeaderMenu } from '../LearnerDashboardHeader/hooks';
 
 
@@ -143,7 +141,7 @@ export const DashboardLayout = ({ children }) => {
 
         <div className='flex-1 overflow-auto'>
           <div className="flex-1">
-            {children}
+            {children}          
             {/* <Row>
                 <Col {...courseListColumnProps} className="course-list-column">
                 </Col>

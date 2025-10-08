@@ -28,25 +28,24 @@ const UserDropdown = ({ userMenu = [], username = 'User Name' }) => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const MenuItem = ({ label, href, disabled = false }) => {
-        const Icon = iconMap[label] || UserCircle; // fallback icon
-        return (
-            <a
-                disabled={disabled}
-                href={href}
-                style={{
-                    pointerEvents: disabled ? 'none' : 'auto',
-                }}
-                className={`w-full flex items-center gap-3 py-2 text-sm text-left transition-colors ${disabled
-                    ? 'text-gray-400 cursor-not-allowed'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                    }`}
-            >
-                <img src={Icon} alt="" className="w-4 h-4" />
-                {label}
-            </a>
-        );
-    };
+const MenuItem = ({ label, href, disabled = false }) => {
+    const Icon = iconMap[label] || UserCircle; // fallback icon
+
+    return (
+        <div
+            onClick={() => !disabled && href && window.location.assign(href)}
+            className={`w-full flex items-center gap-3 py-2 text-sm text-left transition-colors rounded-md 
+                ${disabled 
+                    ? 'text-gray-400 cursor-not-allowed pointer-events-none' 
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                }`}
+        >
+            <img src={Icon} alt="" className="w-4 h-4" />
+            {label}
+        </div>
+    );
+};
+
 
     const capitalizeFirstLetter = (str = '') => {
         if (!str) return '';

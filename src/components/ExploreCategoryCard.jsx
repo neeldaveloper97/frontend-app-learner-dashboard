@@ -37,7 +37,7 @@ const ExploreCategoryCard = ({
                     {description}
                 </p>
                 <button
-                    onClick={onExplore}
+                     onClick={() => window.location.href = `${window.location.href}${onExplore}`}
                     className="text-contentDarkInformative hover:text-blue-700 transition-colors font-medium text-sm flex items-center gap-1"
                 >
                     Explore
