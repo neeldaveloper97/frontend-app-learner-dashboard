@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { cloneElement, useEffect, useState } from 'react';
-
-
 import { AppContext } from '@edx/frontend-platform/react';
 import {  useLocation } from 'react-router-dom';
 import AgentHeader from '../../components/AgentLayout/AgentHeader';

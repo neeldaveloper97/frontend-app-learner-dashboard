@@ -344,7 +344,7 @@ export default function ProviderPage() {
                                                         maxHeight: activeQuestion === index ? "1000px" : "0px",
                                                     }}
                                                 >
-                                                    <div className="answer px-5 pb-5 text-left">
+                                                    <div className="answer px-5 py-2 text-left">
                                                         {faq.answer}
                                                     </div>
                                                 </div>

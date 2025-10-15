@@ -1,19 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { useIntl } from '@edx/frontend-platform/i18n';
-import {
-  ActionRow,
-  Button,
-  Form,
-  ModalDialog,
-} from '@openedx/paragon';
+import { useIntl } from "@edx/frontend-platform/i18n";
+import { ActionRow, Button, Form, ModalDialog } from "@openedx/paragon";
 
-import { utilHooks } from 'hooks';
-import { nullMethod, dateFormatter } from 'utils';
+import { utilHooks } from "hooks";
+import { nullMethod, dateFormatter } from "utils";
 
-import useSelectSessionModalData from './hooks';
-import { LEAVE_OPTION } from './constants';
-import messages from './messages';
+import useSelectSessionModalData from "./hooks";
+import { LEAVE_OPTION } from "./constants";
+import messages from "./messages";
 
 export const SelectSessionModal = () => {
   const {

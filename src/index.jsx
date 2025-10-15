@@ -31,7 +31,6 @@ import NoticesWrapper from './components/NoticesWrapper';
 import ExploreCourses from './containers/ExploreCourses';
 import SingleCourse from './components/SingleCourse';
 import ProviderPage from './components/ProviderPage';
-import InstructorPage from './components/InstructorPage';
 
 subscribe(APP_READY, () => {
   const root = createRoot(document.getElementById('root'));
@@ -39,7 +38,7 @@ subscribe(APP_READY, () => {
   root.render(
     <StrictMode>
       <AppProvider store={store}>
-        <NoticesWrapper>
+         <NoticesWrapper>
           <Routes>
             <Route path="/" element={<PageWrap><App /></PageWrap>}/>   
              <Route path="/explore-courses/" element={<PageWrap><ExploreCourses /></PageWrap>}>            
